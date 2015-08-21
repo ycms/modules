@@ -55,7 +55,7 @@ class MakeRequestCommand extends GeneratorCommand
         return (new Stub('/request.stub', [
             'MODULE' => $this->getModuleName(),
             'NAME' => $this->getFileName(),
-            'MODULE_NAMESPACE' => $this->laravel['modules']->config('namespace'),
+            'MODULE_NAMESPACE' => $this->getModuleNamespace(),
             'NAMESPACE' => $this->getClassNamespace($module),
             'CLASS' => $this->getClass(),
         ]))->render();

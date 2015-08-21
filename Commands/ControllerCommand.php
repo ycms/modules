@@ -57,7 +57,7 @@ class ControllerCommand extends GeneratorCommand
             'CONTROLLERNAME' => $this->getControllerName(),
             'CLASS' => $this->getClass(),
             'NAMESPACE' => $module->getLowername(),
-            'MODULE_NAMESPACE' => $this->laravel['modules']->config('namespace'),
+            'MODULE_NAMESPACE' => $this->getModuleNamespace(),
             'CLASS_NAMESPACE' => $this->getClassNamespace($module),
         ]))->render();
     }

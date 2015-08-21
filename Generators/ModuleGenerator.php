@@ -446,4 +446,5 @@ class ModuleGenerator extends Generator
     {
         return $this->module->config('composer.author.email');
     }
+
 }

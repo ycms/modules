@@ -92,6 +92,11 @@ abstract class GeneratorCommand extends Command
 
         $namespace .= '\\'.$extra;
 
-        return rtrim($namespace, '\\');
+        return trim($namespace, '\\');
+    }
+
+    function getModuleNamespace(){
+        $namespace = $this->laravel['modules']->config('namespace');
+        return $namespace ? $namespace.'\\' : '';
     }
 }
