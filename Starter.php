@@ -16,6 +16,8 @@ class Starter
      */
     public static function start($path, Finder $finder = null, Filesystem $files = null)
     {
+
+
         $finder = $finder ?: new Finder();
 
         // We will use the finder to locate all "autoload.php" files in the workbench
@@ -25,8 +27,17 @@ class Starter
 
         $autoloads = $finder->in($path)->files()->name('autoload.php')->depth('<= 3')->followLinks();
 
+        if(is_callable($init = \Config::get('modules.init'))){
+            call_user_func($init);
+        }
+
         foreach ($autoloads as $file) {
             $files->requireOnce($file->getRealPath());
+        }
+
+
+        if(is_callable($final = \Config::get('modules.final'))){
+            call_user_func($final);
         }
     }
 }

@@ -292,6 +292,10 @@ class Repository implements RepositoryInterface, Countable
      */
     public function register()
     {
+        if(is_callable($init = \Config::get('modules.init'))){
+            call_user_func($init);
+        }
+
         foreach ($this->getOrdered() as $module) {
             $module->register();
         }
@@ -304,6 +308,10 @@ class Repository implements RepositoryInterface, Countable
     {
         foreach ($this->getOrdered() as $module) {
             $module->boot();
+        }
+
+        if(is_callable($final = \Config::get('modules.final'))){
+            call_user_func($final);
         }
     }
 

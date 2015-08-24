@@ -77,7 +77,7 @@ class ModulesServiceProvider extends ServiceProvider
         $aliases = [
             'HTML' => 'Collective\Html\HtmlFacade',
             'Form' => 'Collective\Html\FormFacade',
-            'Module' => 'YCMS\Modules\Facades\Module',
+            'Modules' => 'YCMS\Modules\Facades\Module',
         ];
 
         AliasLoader::getInstance($aliases)->register();
